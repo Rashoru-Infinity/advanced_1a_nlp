@@ -20,7 +20,7 @@ public class Practice2 {
 					break;
 				}
 				if (line2.split("\t")[1].split(",")[1].equals("固有名詞"))
-					System.out.println(line2.split(",")[6]);
+					System.out.println(line2.split("\t")[0]);
 			}
 			br.close();
 			brfile.close();
