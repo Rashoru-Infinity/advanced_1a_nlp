@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Practice1 {
+public class Practice3 {
 	public static void main(String[] args) {
 		try {
 			Process process = Runtime.getRuntime().exec("mecab");
@@ -15,12 +15,23 @@ public class Practice1 {
 			pw.println(sb.toString());
 			pw.flush();
 			String line2;
+			int count = 0;
+			sb.delete(0, sb.length());
 			while ((line2 = br.readLine()) != null) {
 				if (line2.equals("EOS")) {
 					break;
 				}
-				if (line2.split("\t")[1].split(",")[0].equals("動詞"))
-					System.out.println(line2.split(",")[6]);
+				if (line2.split("\t")[1].split(",")[0].equals("名詞")) {
+					count++;
+					sb.append(line2.split("\t")[0]);
+				}else{
+					if (count > 1) {
+						System.out.println(sb.toString());
+					}
+					sb.delete(0, sb.length());
+					count = 0;
+				}
+					
 			}
 			br.close();
 			brfile.close();

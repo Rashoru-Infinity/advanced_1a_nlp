@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Practice1 {
+public class Practice2 {
 	public static void main(String[] args) {
 		try {
 			Process process = Runtime.getRuntime().exec("mecab");
@@ -19,7 +19,7 @@ public class Practice1 {
 				if (line2.equals("EOS")) {
 					break;
 				}
-				if (line2.split("\t")[1].split(",")[0].equals("動詞"))
+				if (line2.split("\t")[1].split(",")[1].equals("固有名詞"))
 					System.out.println(line2.split(",")[6]);
 			}
 			br.close();
