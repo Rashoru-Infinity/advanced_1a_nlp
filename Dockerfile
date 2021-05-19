@@ -6,6 +6,7 @@ RUN apt update && \
 	g++ \
 	make \
 	git \
+	default-jdk-headless \
 	vim
 
 WORKDIR /root
@@ -31,5 +32,7 @@ make && \
 make install
 
 ENV DEBIAN_FRONTEND=newt
+
+WORKDIR /root
 
 CMD tail -f /dev/null
