@@ -7,7 +7,8 @@ RUN apt update && \
 	make \
 	git \
 	default-jdk-headless \
-	vim
+	vim \
+	language-pack-ja
 
 WORKDIR /root
 
@@ -32,6 +33,8 @@ make && \
 make install
 
 ENV DEBIAN_FRONTEND=newt
+ENV LANG=ja_JP.UTF-8
+RUN update-locale LANG=ja_JP.UTF-8
 
 WORKDIR /root
 
