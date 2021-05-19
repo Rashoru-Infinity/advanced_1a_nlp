@@ -12,6 +12,7 @@ RUN apt update && \
 
 WORKDIR /root
 
+COPY ./.vimrc ./
 COPY ./mecab-0.996.tar.gz ./
 COPY ./mecab-ipadic-2.7.0-20070801.tar.gz ./
 
