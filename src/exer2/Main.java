@@ -24,8 +24,13 @@ public class Main {
 			sb.delete(0, sb.length());
 			while ((input = br.readLine()) != null) {
 			}
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	public static void response(String input) {
-		
+		for (ResponsePattern r : ptnList) {
+			if (r.keyWord.contains(input)) {
+				
 	}
 }
