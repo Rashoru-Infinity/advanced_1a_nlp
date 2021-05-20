@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Chat {
+public class Main {
 	static List<ResponsePattern> ptnList;
 	public static void main(String[] args) {
 		ptnList = new ArrayList<>();
@@ -13,5 +13,19 @@ public class Chat {
 			}
 			ptnList.add(new ResponsePattern(resp[0], resp[1]));
 		}
+	}
+	public static void Chat() {
+		System.out.println("System:	こんにちは!");
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("You	:");
+			String input;
+			StringBuilder sb = new StringBuilder();
+			sb.delete(0, sb.length());
+			while ((input = br.readLine()) != null) {
+			}
+	}
+	public static void response(String input) {
+		
 	}
 }
