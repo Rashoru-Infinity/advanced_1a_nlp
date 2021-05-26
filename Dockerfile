@@ -1,14 +1,19 @@
-FROM ubuntu:focal
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt update && \
-	apt -y install wget \
+FROM alpine:latest
+RUN apk update && \
+	apk upgrade && \
+	apk add --no-cache --update \
+	wget \
 	gcc \
 	g++ \
 	make \
 	git \
-	default-jdk-headless \
+	openjdk11-jdk \
 	vim \
-	language-pack-ja
+	tmux \
+	bash
+
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 WORKDIR /root
 
@@ -21,8 +26,7 @@ WORKDIR /root/mecab-0.996
 
 RUN ./configure --with-charset=utf8 && \
 make && \
-make install && \
-ldconfig
+make install
 
 WORKDIR /root
 
@@ -33,10 +37,8 @@ RUN ./configure --with-charset=utf8 && \
 make && \
 make install
 
-ENV DEBIAN_FRONTEND=newt
-ENV LANG=ja_JP.UTF-8
-RUN update-locale LANG=ja_JP.UTF-8
-
 WORKDIR /root
+
+RUN git clone https://github.com/Rashoru-Infinity/advanced_1a_nlp.git
 
 CMD tail -f /dev/null
