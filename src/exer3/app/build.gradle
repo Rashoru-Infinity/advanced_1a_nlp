@@ -33,8 +33,15 @@ run {
 	standardInput = System.in
 }
 
-task copyData(type: Copy) {
+task setData(type: Copy) {
 	from project.rootDir.toString() + '/app/src/main/java/evil_fortune_teller/'
 	into project.rootDir.toString() + '/app/'
 	include '*.txt'
+}
+
+task delData(type: Delete) {
+	//delete project.rootDir.toString() + '/app/'
+	delete fileTree(project.rootDir.toString() + '/app/') {
+		include '*.txt'
+	}
 }
