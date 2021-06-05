@@ -1,3 +1,5 @@
+package evil_fortune_teller;
+
 import java.net.*;
 import java.io.*;
 

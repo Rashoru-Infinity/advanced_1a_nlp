@@ -1,3 +1,5 @@
+package evil_fortune_teller;
+
 public enum Signs {
 	Aries,
 	Taurus,

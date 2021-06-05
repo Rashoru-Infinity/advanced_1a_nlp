@@ -10,7 +10,8 @@ RUN apk update && \
 	openjdk11-jdk \
 	vim \
 	tmux \
-	bash
+	bash \
+	gradle
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
