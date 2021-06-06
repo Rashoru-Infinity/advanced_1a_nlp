@@ -100,7 +100,9 @@ public class ReplyGenerator {
 		return false;
 	}
 	private String replaceWord(String src) {
+		src = src.replace("みょうにち", "明日");
 		src = src.replace("明々後日", "しあさって");
+		src = src.replace("いっさくじつ", "一昨日");
 		return src;
 	}
 }
