@@ -37,9 +37,15 @@ public class ReplyGenerator {
 	public String getReply(String msg, Scanner sc) throws MalformedURLException, IOException {
 		msg = replaceWord(msg);
 		if (hasDefenceTrigger(msg)) {
-			return defenceMsg;
+			StringBuilder sb = new StringBuilder();
+			sb.append("Fortune Teller : ");
+			sb.append(defenceMsg);
+			return sb.toString();
 		}else if (!hasFTTrigger(msg)) {
-			return defaultMsg;
+			StringBuilder sb = new StringBuilder();
+			sb.append("Fortune Teller : ");
+			sb.append(defaultMsg);
+			return sb.toString();
 		}
 		StringBuilder reply = new StringBuilder();
 		ArrayList<String> words = getWords(msg);
