@@ -18,7 +18,7 @@ public class Main {
 		System.out.println(rpGen.defaultMsg);
 		System.out.print("You : ");
 		while (!(msg = sc.next()).equals("さようなら")) {
-			System.out.println(rpGen.getReply(msg));
+			System.out.println(rpGen.getReply(msg, sc));
 			System.out.print("You : ");
 		}
 		sc.close();
