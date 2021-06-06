@@ -13,15 +13,34 @@ public class ReplyGenerator {
 	private DayOffset dayOffset = new DayOffset();
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 	private static final String URLCONST = "http://api.jugemkey.jp/api/horoscope/free/";
+	private HashSet<String> defenceTriggers = new HashSet<>();
+	private HashSet<String> ftKeywords = new HashSet<>();
 	public ReplyGenerator() {
 		try {
+			String triggers = ReplyLoader.loadReply("Doubt.txt");
+			String[] words;
 			defaultMsg = ReplyLoader.loadReply("Default.txt");
-			defenceMsg = ReplyLoader.loadReply("Doubt.txt");
+			defenceMsg = ReplyLoader.loadReply("Defence.txt");
+			words = triggers.split(System.getProperty("line.separator"));
+			for (int i = 0;i < words.length;i++) {
+				defenceTriggers.add(words[i]);
+			}
+			triggers = ReplyLoader.loadReply("FTKeyword.txt");
+			words = triggers.split(System.getProperty("line.separator"));
+			for (int i = 0;i < words.length;i++) {
+				ftKeywords.add(words[i]);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	public String getReply(String msg, Scanner sc) throws MalformedURLException, IOException {
+		msg = replaceWord(msg);
+		if (hasDefenceTrigger(msg)) {
+			return defenceMsg;
+		}else if (!hasFTTrigger(msg)) {
+			return defaultMsg;
+		}
 		StringBuilder reply = new StringBuilder();
 		ArrayList<String> words = getWords(msg);
 		profile.setSign(msg);
@@ -63,5 +82,25 @@ public class ReplyGenerator {
 			words.add(lines[i].split("\t")[0]);
 		}
 		return words;
+	}
+	private boolean hasDefenceTrigger(String msg) {
+		for (String s : defenceTriggers) {
+			if (msg.contains(s)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	private boolean hasFTTrigger(String msg) {
+		for (String s : ftKeywords) {
+			if (msg.contains(s)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	private String replaceWord(String src) {
+		src = src.replace("明々後日", "しあさって");
+		return src;
 	}
 }

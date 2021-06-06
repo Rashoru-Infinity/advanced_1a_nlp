@@ -21,6 +21,7 @@ public class Main {
 			System.out.println(rpGen.getReply(msg, sc));
 			System.out.print("You : ");
 		}
+		System.out.println("Fortune Teller : お気をつけて");
 		sc.close();
 	}
 }
