@@ -34,7 +34,7 @@ gradle delData
 ```
 ![DelData](https://user-images.githubusercontent.com/49583698/120918765-0ea45200-c6f1-11eb-8970-02ff173f4b95.gif)
 
-# Note
+# Spoilers
 - 占い師は12位しか出しません。疑うメッセージを投げると、弁明します。  
 - 以下のようなメッセージを投げると占いをしてくれます。 
 ```
