@@ -17,3 +17,13 @@ gradle  setData
 gradle run
 ```
 占い結果に満足したら「さようなら」を告げて占いを終了します。  
+
+# Other Options
+ビルドしたファイルのクリア
+```
+gradle clean
+```
+仕込みの後片付け
+```
+gradle delData
+```
